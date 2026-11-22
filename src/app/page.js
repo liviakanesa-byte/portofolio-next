@@ -1,5 +1,11 @@
+import Link from "next/link";
 import Hero from "@/components/Hero";
+import ProyekCard from "@/components/ProyekCard";
 import SkillCard from "@/components/SkillCard";
+import { buttonVariants } from "@/components/ui/button";
+import { supabase } from "@/lib/supabase";
+
+
 const skills = [
   { nama: "HTML", level: "Menengah" },
   { nama: "CSS", level: "Menengah" },
@@ -13,7 +19,13 @@ const study = [
   { day: "Selasa", time:"19.00-20.00", activity:"Mengerjakan tugas praktik"},
   { day: "Rabu", time:"19.00-21.00", activity:"Merekam video dan menulis laporan"}
 ]
-export default function Home() {
+export default async function Home() {
+  const { data: proyek, error: proyekError } = await supabase
+    .from("project")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(3);
+
   return (
     <main className="mx-auto max-w-5xl px-4 py-10">
       <Hero
@@ -21,8 +33,8 @@ export default function Home() {
         tagline="Siswa kelas X SMK, calon Junior Web Developer di 
 Kelas Industri UBIG."
       />
-         <section className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-3 text-2xl font-bold text-utama dark:text-sky-200 dark:text-sky-200 dark:text-sky-200">
+         <section className="mt-8 rounded-xl border border-border bg-card p-6 shadow-sm">
+        <h2 className="mb-3 text-2xl font-bold text-primary">
           Tentang Saya
         </h2>
         <p className="leading-7 text-black-700">
@@ -31,11 +43,11 @@ Kelas Industri UBIG."
       </section>
 
             <section className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl border border-gray-300 bg-white p-6 shadow-sm">
-                <h2 className="mb-3 text-2xl font-bold text-utama dark:text-sky-200 dark:text-sky-200">
+              <div className="rounded-2xl border border-input bg-card p-6 shadow-sm">
+                <h2 className="mb-3 text-2xl font-bold text-primary">
                   Hobi
                 </h2>
-                <ul className="list-inside list-disc space-y-2 text-gray-600">
+                <ul className="list-inside list-disc space-y-2 text-muted-foreground">
                   <li>
                     Menyanyi
                   </li>
@@ -49,11 +61,11 @@ Kelas Industri UBIG."
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-gray-300 bg-white p-6 shadow-sm p-6">
-                <h2 className="mb-3 text-2xl text-utama dark:text-sky-200 dark:text-sky-200 font-bold">
+              <div className="rounded-2xl border border-input bg-card p-6 shadow-sm">
+                <h2 className="mb-3 text-2xl text-primary font-bold">
                   Cita-Cita / impian
                 </h2>
-                <ul className="list-inside list-disc space-y-2 text-gray-600"><br></br>
+                <ul className="list-inside list-disc space-y-2 text-muted-foreground"><br></br>
                 
                   <ol type="1" className="list-decimal pl-5 strong">
                     <li>
@@ -71,8 +83,8 @@ Kelas Industri UBIG."
               </div>
             </section>
 
-      <section className="mt-10 textutama bg-white bg-latar rounded-xl rounded-full border-gray-300 shadow-sm p-5">
-        <h2 className="mb-4 text-2xl font-bold textutama">Keahlian</h2>
+      <section className="mt-10 bg-card rounded-xl border border-border shadow-sm p-5">
+        <h2 className="mb-4 text-2xl font-bold text-primary">Keahlian</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {skills.map((skill) => (
             <SkillCard key={skill.nama} nama={skill.nama} level={skill.level} />
@@ -81,10 +93,10 @@ Kelas Industri UBIG."
       </section>
 
       <section>
-        <div className="mt-10 textutama w-full max-w-auto bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-          <h2 className="mb-4 text-2xl font-bold textutama">Jadwal Belajar</h2>
+        <div className="mt-10 w-full max-w-auto bg-card rounded-2xl shadow-sm border border-border p-6">
+          <h2 className="mb-4 text-2xl font-bold text-primary">Jadwal Belajar</h2>
           <div className="overflow-hidden rounded-md border border-gray-100">
-            <table className="w-full text-left text-sm text-gray-700 border-collapse">
+            <table className="w-full text-left text-sm text-muted-foreground border-collapse">
               <thead>
                 <tr className="bg-[#243c5a] text-white font-semibold">
                   <th className="py-3 px-6 w-1/4">Hari</th>
@@ -94,10 +106,10 @@ Kelas Industri UBIG."
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {study.map((item) => (
-                  <tr key={item.day} className="bg-white hover:bg-gray-50 transition-colors">
-                    <td className="py-3.5 px-6 font-normal text-gray-600">{item.day}</td>
-                    <td className="py-3.5 px-6 font-normal text-gray-600">{item.time}</td>
-                    <td className="py-3.5 px-6 font-normal text-gray-600">{item.activity}</td>
+                  <tr key={item.day} className="bg-card hover:bg-muted transition-colors">
+                    <td className="py-3.5 px-6 font-normal text-muted-foreground">{item.day}</td>
+                    <td className="py-3.5 px-6 font-normal text-muted-foreground">{item.time}</td>
+                    <td className="py-3.5 px-6 font-normal text-muted-foreground">{item.activity}</td>
                   </tr>
                 ))}
               </tbody>
@@ -105,6 +117,31 @@ Kelas Industri UBIG."
           </div>
         </div>
       </section>
+      <section className="mt-10">
+        <h2 className="mb-4 text-2xl font-bold text-primary">
+          Proyek Terbaru
+        </h2>
+        {proyekError ? (
+          <p className="text-red-600">Gagal memuat proyek. Silakan coba lagi.</p>
+        ) : proyek && proyek.length > 0 ? (
+          <div className="grid gap-6 md:grid-cols-3">
+            {proyek.map((item) => (
+              <ProyekCard key={item.slug} proyek={item} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-muted-foreground">Belum ada proyek yang tersedia.</p>
+        )}
+      </section>
+      <Link
+        href="/proyek"
+        className={buttonVariants({
+          size: "lg",
+          className: "mt-6",
+        })}
+      >
+        Lihat semua proyek
+      </Link>
     </main>
   );
 }

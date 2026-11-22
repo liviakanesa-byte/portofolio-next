@@ -6,14 +6,14 @@ import FormKontak from "@/components/FormKontak";
 export default function Kontak() {
  return (
    <main className="mx-auto w-full max-w-5xl px-4 py-10">
-  <h1 className="mb-8 text-3xl font-bold text-utama dark:text-sky-200 dark:text-sky-200 md:text-4xl">
+  <h1 className="mb-8 text-3xl font-bold text-primary md:text-4xl">
    Hubungi saya
   </h1>
   <div className="mt-8 grid gap-6 md:grid-cols-3">
-  <section className="rounded-xl border border-gray-200 bg white p-6 shadow-sm md:col-span-2">
+  <section className="rounded-xl border border-border bg-card p-6 shadow-sm md:col-span-2">
     <FormKontak />
 </section>
-  <section className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm md:col-span-2">         
+  <section className="rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm md:col-span-2">         
       <form 
         className="space-y-5" 
         action="https://formspree.io/f/mbggzyvl" 
@@ -30,7 +30,7 @@ export default function Kontak() {
    name="nama"
    placeholder="masukan nama lengkap anda"
    required
-   className="mt-2 w-full rounded-lg border border-gray-300 bg-white p-3"
+   className="mt-2 w-full rounded-lg border border-input bg-background p-3"
    onChange={(e) =>{
    const input = e.currentTarget;
 
@@ -57,7 +57,7 @@ export default function Kontak() {
      name="email"
      placeholder="nama@contoh.com"
      required
-     className="mt-2 w-full rounded-lg border border-gray-300 bg-white p-3"
+     className="mt-2 w-full rounded-lg border border-input bg-background p-3"
    />
   </div>
 
@@ -69,7 +69,7 @@ export default function Kontak() {
      name="nomor-hp" 
      placeholder="masukkan nomer telepon anda" required 
      maxLength={13} 
-                                className="mt-2 w-full rounded-lg border border-gray-300 bg-white p-3" 
+                                className="mt-2 w-full rounded-lg border border-input bg-background p-3" 
                                 onChange={(e) => {
                                     const input = e.currentTarget
                                     if(/[^0-9]/.test(input.value)){
@@ -89,7 +89,7 @@ export default function Kontak() {
                                 id="keperluan"
                                 name="keperluan"
                                 required
-                                className="mt-2 w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:border-blue-500"
+                                className="mt-2 w-full rounded-lg border border-input bg-background p-3 outline-none focus:border-primary"
                             >
                                 <option value="">Pilih keperluan</option>
                                 <option value="kerja sama">Membuat proyek bersama</option>
@@ -98,7 +98,7 @@ export default function Kontak() {
                         </div>
 
                         <div>
-                            <label htmlFor="pesan" className="block font-semibold text-utama dark:text-sky-200 dark:text-sky-200">
+                            <label htmlFor="pesan" className="block font-semibold text-primary">
                                 Pesan
                             </label>
                             <textarea
@@ -107,7 +107,7 @@ export default function Kontak() {
                                 rows="5"
                                 placeholder="Tulis pesan Anda di sini..."
                                 required
-                                className="mt-2 w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:border-blue-500"
+                                className="mt-2 w-full rounded-lg border border-input bg-background p-3 outline-none focus:border-primary"
                                 onChange={(e) => {
                                     const input = e.currentTarget
                                     if(/[0-9]/.test(input.value)){
@@ -134,15 +134,15 @@ export default function Kontak() {
 
 
 
-                <section className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm flex flex-col justify-between">
+                <section className="rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm flex flex-col justify-between">
                     <div>
-                        <h2 className="mb-6 text-xl font-bold text-utama dark:text-sky-200 dark:text-sky-200">
+                        <h2 className="mb-6 text-xl font-bold text-primary">
                             Temukan Saya di
                         </h2>
 
                         <div className="space-y-6">
                             <div>
-                                <h3 className="font-semibold text-utama dark:text-sky-200 dark:text-sky-200">
+                                <h3 className="font-semibold text-primary">
                                     GitHub
                                 </h3>
                                 <Link
@@ -156,7 +156,7 @@ export default function Kontak() {
                             </div>
 
                             <div>
-                                <h3 className="font-semibold text-utama dark:text-sky-200 dark:text-sky-200">
+                                <h3 className="font-semibold text-primary">
                                     Email
                                 </h3>
                                 <a
@@ -169,7 +169,7 @@ export default function Kontak() {
                         </div>
                     </div>
 
-                    <div className="mt-8 pt-4 border-t border-gray-200 text-xs text-gray-400 hidden md:block">
+                    <div className="mt-8 pt-4 border-t border-border text-xs text-muted-foreground hidden md:block">
                         Tanggapan biasanya dikirim dalam 1x24 jam.
                     </div>
                     

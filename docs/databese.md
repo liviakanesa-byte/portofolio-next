@@ -1,11 +1,11 @@
 # Struktur Database Portofolio
-Database disimpan di Supabase, project `portofolio-andi` (region 
+Database disimpan di Supabase, project `portofolio-Olivia` (region 
 Southeast Asia, Singapore). Alamat project dan
 publishable key disimpan di `.env.local`, yang tidak ikut di-commit 
 karena tercantum di `.gitignore` (`.env*`).
 
-## Tabel `projects`
-Daftar proyek portofolio Andi Pratama.
+## Tabel `project`
+Daftar proyek portofolio Olivia.
 | Kolom | Tipe | Keterangan |
 | --- | --- | --- |
 | `id` | `int8` | Primary key, nomor otomatis 1, 2, 3, ... |

@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 export default function TombolTema() {
-  const [gelap, setGelap] = useState(false);
+  const [gelap, setGelap] = useState(
+    () => typeof document !== "undefined" &&
+      document.documentElement.classList.contains("dark")
+  );
   function gantiTema() {
     document.documentElement.classList.toggle("dark");
     setGelap(!gelap);
