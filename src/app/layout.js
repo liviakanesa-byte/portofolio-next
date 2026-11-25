@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Olivia Ferdiana cantik",
+  title: "Portofolio Olivia Ferdiana",
   description: "Portofolio Olivia Ferdiana, siswa SMK calon Junior Web Developer di kelas Industri UBIG",
 };
 

@@ -25,6 +25,11 @@ export default function FilterProyek({ proyek }) {
             key={k}
             type="button"
             variant={kategori === k ? "default" : "outline"}
+            className={
+              kategori === k
+                ? ""
+                : "dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
+            }
             onClick={() => setKategori(k)}
           >
             {k}
@@ -48,9 +53,10 @@ export default function FilterProyek({ proyek }) {
 
       {kata && (
         <Button
-          variant="link"
+          type="button"
+          variant="outline"
           onClick={() => setKata("")}
-          className="mt-2 px-0 text-aksen"
+          className="mt-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
         >
           Hapus pencarian
         </Button>

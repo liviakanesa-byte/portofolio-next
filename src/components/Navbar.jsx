@@ -13,7 +13,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-5xl flex-col gap-3 px-4 
 py-4 md:flex-row md:items-center md:justify-between">
         <Link href="/" className="text-xl font-bold">
-          Olivia Ferdianaa
+          Olivia Ferdiana
         </Link>
         <ul className="flex flex-wrap gap-x-5 gap-y-2">
           {menu.map((item) => (

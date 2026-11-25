@@ -23,13 +23,14 @@ export default async function Home() {
   const { data: proyek, error: proyekError } = await supabase
     .from("project")
     .select("*")
+    .neq("slug", "portofolio-responsif")
     .order("created_at", { ascending: false })
     .limit(3);
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-10">
       <Hero
-        nama="Olivia Ferdianaa"
+        nama="Olivia Ferdiana"
         tagline="Siswa kelas X SMK, calon Junior Web Developer di 
 Kelas Industri UBIG."
       />
@@ -136,7 +137,8 @@ Kelas Industri UBIG."
       <Link
         href="/proyek"
         className={buttonVariants({
-          size: "lg",
+          variant: "callout",
+          size: "xl",
           className: "mt-6",
         })}
       >

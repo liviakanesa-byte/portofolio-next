@@ -2,7 +2,7 @@ export default function Footer() {
   const tahun = new Date().getFullYear();
   return (
     <footer className="mt-auto bg-utama p-6 text-center text-latar">
-      <p>&copy; {tahun} Olivia Ferdianaa. Dibuat dengan Next.js di Kelas 
+      <p>&copy; {tahun} Olivia Ferdiana. Dibuat dengan Next.js di Kelas 
 Industri UBIG.</p>
     </footer>
   );

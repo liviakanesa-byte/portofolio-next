@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getGambarProyek } from "@/data/proyek";
 import { supabase } from "@/lib/supabase";
 
 export default async function DetailProyek({ params }) {
@@ -14,12 +15,7 @@ export default async function DetailProyek({ params }) {
   if (error || !item) {
     notFound();
   }
-  const gambarMentah = item.gambar_url?.trim();
-  const gambar = gambarMentah
-    ? (gambarMentah.startsWith("/") || /^https?:\/\//.test(gambarMentah)
-        ? gambarMentah
-        : `/${gambarMentah}`)
-    : "/modul-01.png";
+  const gambar = getGambarProyek(item.slug, item.gambar_url);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
@@ -30,14 +26,16 @@ export default async function DetailProyek({ params }) {
       <p className="mt-2 text-muted-foreground">
         {item.kategori} &middot; Dibuat di {item.minggu}
       </p>
-      <Image
-        src={gambar}
-        alt={`Tangkapan layar ${item.judul}`}
-        width={640}
-        height={420}
-        loading="eager"
-        className="mt-6 h-auto w-full rounded-xl border border-border"
-      />
+      {gambar && (
+        <Image
+          src={gambar}
+          alt={`Tangkapan layar proyek ${item.judul}`}
+          width={640}
+          height={420}
+          sizes="(max-width: 768px) 100vw, 768px"
+          className="mt-6 h-auto w-full rounded-xl border border-border"
+        />
+      )}
       <p className="mt-6 text-lg">{item.deskripsi}</p>
       <h2 className="mt-8 text-2xl font-bold text-primary">Yang Saya 
 Pelajari</h2>

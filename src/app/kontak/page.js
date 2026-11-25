@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import FormKontak from "@/components/FormKontak";
+import { Button } from "@/components/ui/button";
 
 export default function Kontak() {
  return (
@@ -10,10 +10,7 @@ export default function Kontak() {
    Hubungi saya
   </h1>
   <div className="mt-8 grid gap-6 md:grid-cols-3">
-  <section className="rounded-xl border border-border bg-card p-6 shadow-sm md:col-span-2">
-    <FormKontak />
-</section>
-  <section className="rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm md:col-span-2">         
+  <section className="rounded-xl border border-border bg-card p-6 md:p-8 shadow-sm md:col-span-2">         
       <form 
         className="space-y-5" 
         action="https://formspree.io/f/mbggzyvl" 
@@ -121,12 +118,9 @@ export default function Kontak() {
                             />
                         </div>
 
-                        <button
-                            type="submit"
-                            className="rounded-lg bg-utama px-6 py-3 font-semibold text-white transition hover:opacity-90 cursor-pointer"
-                        >
+                        <Button type="submit" size="sm">
                             Kirim Pesan
-                        </button>
+                        </Button>
 
                     </form>
 

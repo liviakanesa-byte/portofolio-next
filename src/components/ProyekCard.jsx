@@ -1,26 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getGambarProyek } from "@/data/proyek";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function ProyekCard({ proyek }) {
-  const gambarMentah = proyek.gambar_url?.trim();
-  const gambar = gambarMentah
-    ? (gambarMentah.startsWith("/") || /^https?:\/\//.test(gambarMentah)
-        ? gambarMentah
-        : `/${gambarMentah}`)
-    : "/modul-01.png";
+  const gambar = getGambarProyek(proyek.slug, proyek.gambar_url);
+
   return (
     <Link href={`/proyek/${proyek.slug}`} className="block rounded-xl hover:shadow-md">
       <Card className="h-full">
-        <Image
-          src={gambar || "/modul-01.png"}
-          alt={`Tangkapan layar ${proyek.judul}`}
-          width={640}
-          height={420}
-          loading="eager"
-          className="h-auto w-full"
-        />
+        {gambar && (
+          <Image
+            src={gambar}
+            alt={`Tangkapan layar proyek ${proyek.judul}`}
+            width={640}
+            height={420}
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="aspect-[3/2] w-full object-cover"
+          />
+        )}
         <CardHeader>
           <Badge>{proyek.kategori}</Badge>
           <CardTitle className="text-lg text-primary">{proyek.judul}

@@ -38,3 +38,21 @@ export const proyek = [
       "Tiga kolom: hari, waktu, kegiatan",
     ],
 }]
+
+export function getGambarProyek(slug, gambarUrl) {
+  const gambarBerdasarkanSlug = {
+    "halaman-profil": "/modul-01.png",
+    "form-kontak": "/modul-02.png",
+    "tabel-jadwal": "/modul-03.png",
+  };
+  const gambarTerdaftar = gambarBerdasarkanSlug[slug];
+
+  if (gambarTerdaftar) {
+    return gambarTerdaftar;
+  }
+
+  const gambarLokal = gambarUrl?.trim();
+  return /^\/modul-0[123]\.png$/.test(gambarLokal ?? "")
+    ? gambarLokal
+    : undefined;
+}

@@ -3,13 +3,14 @@ import { supabase } from "@/lib/supabase";
 
 export const metadata = {
   title: "Proyek",
-  description: "Daftar proyek HTML, CSS, dan JavaScript karya Olivia Ferdianaa.",
+  description: "Daftar proyek HTML, CSS, dan JavaScript karya Olivia Ferdiana.",
 };
 
 export default async function DaftarProyek() {
   const { data: proyek, error } = await supabase
     .from("project")
     .select("*")
+    .neq("slug", "portofolio-responsif")
     .order("created_at", { ascending: false });
 
   if (error) {
